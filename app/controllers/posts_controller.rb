@@ -37,7 +37,7 @@ class PostsController < ApplicationController
   # PATCH/PUT /posts/1 or /posts/1.json
   def update
     @post.update(post_params)
-    redirect_to @post, notice: "Post was successfully updated."
+    redirect_to(@post, status: :see_other) if request.referer == edit_post_url(@post)
   end
 
   # DELETE /posts/1 or /posts/1.json
