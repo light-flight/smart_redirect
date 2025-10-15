@@ -37,7 +37,6 @@ class PostsController < ApplicationController
   # PATCH/PUT /posts/1 or /posts/1.json
   def update
     @post.update(post_params)
-    redirect_to @post, notice: "Post was successfully updated."
   end
 
   # DELETE /posts/1 or /posts/1.json
