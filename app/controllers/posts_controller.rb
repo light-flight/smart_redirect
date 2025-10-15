@@ -37,6 +37,7 @@ class PostsController < ApplicationController
   # PATCH/PUT /posts/1 or /posts/1.json
   def update
     @post.update(post_params)
+    redirect_to(@post, status: :see_other) if request.referer.end_with?(edit_post_path(@post))
   end
 
   # DELETE /posts/1 or /posts/1.json
