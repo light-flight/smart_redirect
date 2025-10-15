@@ -1,5 +1,7 @@
 class PostsController < ApplicationController
   before_action :set_post, only: %i[ show edit update destroy ]
+  before_action :store_return_location, only: :edit
+
 
   # GET /posts or /posts.json
   def index
@@ -37,7 +39,7 @@ class PostsController < ApplicationController
   # PATCH/PUT /posts/1 or /posts/1.json
   def update
     @post.update(post_params)
-    redirect_to @post, notice: "Post was successfully updated."
+    redirect_back_or_to @post
   end
 
   # DELETE /posts/1 or /posts/1.json
